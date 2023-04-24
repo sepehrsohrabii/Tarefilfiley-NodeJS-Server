@@ -9,7 +9,6 @@ const flash = require("connect-flash");
 
 const passport = require("passport");
 const cors = require("cors");
-const multer = require("multer");
 const router = require("./routes/routes");
 const mongodb = require("./configs/db");
 const sessionMiddleware = require("./helpers/session");
