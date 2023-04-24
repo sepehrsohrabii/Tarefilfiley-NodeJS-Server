@@ -84,4 +84,28 @@ const getData = async (req, res) => {
     });
   }
 };
-module.exports = { create, update, all, remove, getData };
+const get = async (req, res) => {
+  const { restaurantLink } = req.query;
+  console.log(restaurantLink);
+  try {
+    const restaurant = await RestaurantModel.findOne({
+      link: restaurantLink,
+    }).exec();
+    const categories = await CategoryModel.find({
+      restaurant: restaurant._id,
+    });
+    const products = await ProductModel.find({
+      restaurant: restaurant._id,
+    });
+    res.status(200).send({
+      restaurant,
+      categories,
+      products,
+    });
+  } catch (error) {
+    res.status(400).send({
+      error,
+    });
+  }
+};
+module.exports = { create, update, all, remove, getData, get };
