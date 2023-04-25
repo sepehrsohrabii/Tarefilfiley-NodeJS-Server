@@ -32,7 +32,8 @@ const post = async (req, res) => {
     user.password = await bcrypt.hash(password, salt);
 
     await user.save();
-    res.json({ msg: "User registered" });
+    passport.authenticate("local", { failureRedirect: "/login" });
+    res.status(200).send(req.sessionID);
   } catch (err) {
     res.status(500).send("ارور از سمت ماست لطفا مجدد تلاش کنید.");
   }
