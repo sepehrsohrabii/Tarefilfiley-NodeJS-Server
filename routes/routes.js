@@ -65,7 +65,7 @@ router.post(
 );
 router.post("/restaurant/all", restaurantController.all);
 router.delete("/restaurant/remove", restaurantController.remove);
-// router.get("/restaurant/get-data", restaurantController.get);
+router.get("/restaurant/get-data", restaurantController.get);
 router.post("/restaurant/get-data", restaurantController.getData);
 
 router.post("/category/create", categoryController.create);
